@@ -10,7 +10,15 @@ let data = [];
 
 /* Format money */
 const formatMoney =(number)=>{
-  return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  // return '$' + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+  const options = {
+    style: 'currency',
+    currency: 'INR'
+  }
+  const formattedCurrency = Intl.NumberFormat('en-US', options).format(number)
+
+  return formattedCurrency;
 }
 
 /* Populate data into the DOM */
@@ -71,8 +79,8 @@ const sortByRichest = () =>{
 }
 
 const totalWealth = () =>{
-  const total = data.reduce((acc, user) => (acc + user.money), 0);
-
+  const total = data.reduce((acc, user) => (acc + user.money),0);
+  
   const element = document.createElement('div');
   element.innerHTML = `<h3>Total Wealth: <strong>${formatMoney(
     total
