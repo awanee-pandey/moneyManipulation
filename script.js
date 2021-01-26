@@ -14,7 +14,7 @@ const formatMoney =(number)=>{
 
   const options = {
     style: 'currency',
-    currency: 'INR'
+    currency: 'USD'
   }
   const formattedCurrency = Intl.NumberFormat('en-US', options).format(number)
 
